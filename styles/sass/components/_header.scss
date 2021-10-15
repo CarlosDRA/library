@@ -1,3 +1,6 @@
+@use "../abstracts/colors" as *;
+
+//mobile first
 .header{
     text-align: center;
 
@@ -14,4 +17,51 @@
 
 #search-book{
     width: 84vw;
+}
+
+//tablet design
+@media screen and (min-width: 768px) {
+    .header{
+        width: 85vw;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: center;
+        justify-content: space-between;
+    }
+    
+    .search__bar{
+        width: 450px;
+        text-align: right;
+        
+        label{
+            visibility: visible;
+            position: relative;
+            z-index: 0;
+        }
+    }
+
+    #search-book{
+        width: 60%;
+    }
+
+    .header__add{
+        margin-top: 0;
+    }
+}
+
+
+//desktop layout
+@media screen and (min-width: 1024px) {
+    .header{
+        width: 80vw;
+        height: 50px;
+        max-width: 1400px;
+        padding: 10px 30px;
+        background-color: $component-bg;
+    }
+
+    #search-book{
+        width: 75%;
+    }
 }
