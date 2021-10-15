@@ -1,0 +1,11 @@
+@use "../abstracts/colors" as *;
+
+html,
+body{
+    min-height: 99.9vh;
+}
+
+body{
+    padding-top: .9px;
+    background-color: $background;
+}

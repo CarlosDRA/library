@@ -1,0 +1,17 @@
+@use "../abstracts/colors" as *;
+
+.btn{
+    width: 130px;
+    height: 30px;
+    border-radius: 4px;
+    border: none;
+    color: white;
+}
+
+.add__btn{
+    background-color: $add-btn;
+}
+
+.delete__btn{
+    background-color: $delete-btn;
+}

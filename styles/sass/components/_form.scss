@@ -1,0 +1,55 @@
+@use "../abstracts/colors" as *;
+
+.form__container{
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.new__book{
+    background-color: $background;
+    min-width: 290px;
+    max-width: 450px;
+    height: 500px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    border-radius: 4px;
+    border: 1px solid rgb(0 0 0 / .1);
+    box-shadow: 0 0 10px 2px rgb(0 0 0 / .1);
+    transform: translate(-50%, -50%);
+}
+
+.form{
+    text-align: center;
+
+    h2{
+        margin: 40px auto;
+    }
+
+    label{
+        display: block;
+        margin: 10px auto 5px auto;
+    }
+
+    input{
+        display: block;
+        margin: 5px auto 25px auto
+    }
+
+    #book-status{
+        display: block;
+        width: 205px;
+        margin: 5px auto;
+    }
+
+    .btn{
+        margin-top: 50px;
+    }
+}
+
+.hidden{
+    display: none;
+}

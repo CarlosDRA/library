@@ -1,0 +1,15 @@
+@use "../abstracts/colors" as *;
+
+.library{
+    background-color: $component-bg;
+}
+
+.card__container{
+    .book__card:nth-of-type(even){
+        background-color: $book-1
+    }
+
+    .book__card:nth-of-type(odd){
+        background-color: $book-2;
+    }
+}

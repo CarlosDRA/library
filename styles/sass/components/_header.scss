@@ -1,0 +1,17 @@
+.header{
+    text-align: center;
+
+    label{
+        visibility: hidden;
+        position: absolute;
+        z-index: -10;
+    }
+}
+
+.header__add{
+    margin-top: 10px;
+}
+
+#search-book{
+    width: 84vw;
+}
