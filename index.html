@@ -23,7 +23,7 @@
                 <input type="text" name="search-book" id="search-book" placeholder="Book to search">
             </div>
             
-            <button class="header__add add__btn btn">Add Book</button>
+            <button class="header__add add__btn btn" id="add__book">Add Book</button>
         </header>
         <section class="library">
 
@@ -37,79 +37,7 @@
                     </div>
                 </div>
 
-                <div class="card__container">
-                    <div class="book__card">
-                        <div class="card__grid">
-                            <div class="card__title">
-                                <h4>The Hobbit</h4>
-                            </div>
-                            <div class="card__author">
-                                <h4>J.R.R. Tolkien</h4>
-                            </div>
-                            <div class="card__pages">
-                                <h4>293 pages</h4>
-                            </div>
-                            <div class="card__status">
-                                <h4>Completed</h4>
-                            </div>
-                        </div>
-                        <button class="book__delete btn delete__btn">DELETE BOOK!</button>
-                    </div>
-                    
-                    <div class="book__card">
-                        <div class="card__grid">
-                            <div class="card__title">
-                                <h4>The Hobbit</h4>
-                            </div>
-                            <div class="card__author">
-                                <h4>J.R.R. Tolkien</h4>
-                            </div>
-                            <div class="card__pages">
-                                <h4>293 pages</h4>
-                            </div>
-                            <div class="card__status">
-                                <h4>Completed</h4>
-                            </div>
-                        </div>
-                        <button class="book__delete btn delete__btn">DELETE BOOK!</button>
-                    </div>
-
-                    <div class="book__card">
-                        <div class="card__grid">
-                            <div class="card__title">
-                                <h4>The Hobbit</h4>
-                            </div>
-                            <div class="card__author">
-                                <h4>J.R.R. Tolkien</h4>
-                            </div>
-                            <div class="card__pages">
-                                <h4>293 pages</h4>
-                            </div>
-                            <div class="card__status">
-                                <h4>Completed</h4>
-                            </div>
-                        </div>
-                        <button class="book__delete btn delete__btn">DELETE BOOK!</button>
-                    </div>
-
-                    <div class="book__card">
-                        <div class="card__grid">
-                            <div class="card__title">
-                                <h4>The Hobbit</h4>
-                            </div>
-                            <div class="card__author">
-                                <h4>J.R.R. Tolkien</h4>
-                            </div>
-                            <div class="card__pages">
-                                <h4>293 pages</h4>
-                            </div>
-                            <div class="card__status">
-                                <h4>Completed</h4>
-                            </div>
-                        </div>
-                        <button class="book__delete btn delete__btn">DELETE BOOK!</button>
-                    </div>
-                </div>
+                <div class="card__container"></div>
 
             </div>
         </section>
@@ -127,7 +55,7 @@
                 <input type="text" name="book-author" id="book-author">
 
                 <label for="book-pages">Pages</label>
-                <input type="text" name="book-pages" id="book-pages">
+                <input type="number" name="book-pages" id="book-pages">
 
                 <label for="book-status">Status</label>
                 <select id="book-status">
@@ -137,8 +65,8 @@
                     <option value="Finished">Finished</option>
                 </select>
 
-                <button class="btn add__btn">Add Book</button>
-                <button class="btn delete__btn">Cancel</button>
+                <button class="btn add__btn" id="form__add">Add Book</button>
+                <button class="btn delete__btn" id="form__del">Cancel</button>
             </form>
         </div>
     </aside>
