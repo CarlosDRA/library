@@ -18,19 +18,20 @@ const newPages = document.querySelector("#book-pages");
 const newStatus = document.querySelector("#book-status");
 
 
-const book = function(title, author, pages, isRead){
+const book = function(title, author, pages, isRead, id){
     this.title = title;
     this.author = author;
     this.pages = pages;
     this.status = isRead;
+    this.id = id;
 }
 book.prototype.info = function(){
-    return `${this.title} by ${this.author}, ${this.pages} pages, ${this.status}`;
+    return `${this.title} by ${this.author}, ${this.pages} pages, id: ${this.id},  ${this.status}`;
 };
 
 
-const theHobbit = new book("The hobbit", "J.R.R. Tolkien", 293, "Finished");
-const harryPotter = new book("Harry Potter", "J.K. Rowling", 100, "Plan to read");
+const theHobbit = new book("The hobbit", "J.R.R. Tolkien", 293, "Finished", id++);
+const harryPotter = new book("Harry Potter", "J.K. Rowling", 100, "Plan to read", id++);
 
 addBookToLibrary(theHobbit);
 addBookToLibrary(harryPotter);
@@ -43,10 +44,10 @@ delUpdateBtn.addEventListener("click", updateCancel);
 
 
 //create a new book card
-function newCard(title, author, pages, status){
+function newCard(title, author, pages, status, id){
     let card = document.createElement("div");
     card.classList.add("book__card");
-    card.setAttribute("id", id++);
+    card.setAttribute("id", id);
     card.innerHTML = `
         <div class="card__grid">
             <div class="card__title">
@@ -80,15 +81,11 @@ function newCard(title, author, pages, status){
 
 //Add the book to the page and array
 function addBookToLibrary(book){
-    let newBook = newCard(book.title, book.author, book.pages, book.status)
+    let newBook = newCard(book.title, book.author, book.pages, book.status, book.id)
     library.appendChild(newBook);
     books.push(book);
 }
 
-
-/* function getId(){
-
-} */
 
 //give functionality to the buttons
 function addBook(e){
@@ -98,7 +95,7 @@ function addBook(e){
 function formAdd(e){
     e.preventDefault();
     
-    const newBook = new book(newTitle.value, newAuthor.value, newPages.value, newStatus.value);
+    const newBook = new book(newTitle.value, newAuthor.value, newPages.value, newStatus.value, id++);
     
     addBookToLibrary(newBook);
     form.classList.add("hidden");
@@ -112,29 +109,32 @@ function formDel(e){
 }
 
 function removeBook(e){
-    let id;
+    let idToRemove;
 
     if(e.target.nodeName != "BUTTON"){
-        id = e.target.parentElement.parentElement.getAttribute("id");
+        idToRemove = e.target.parentElement.parentElement.getAttribute("id");
     } else {
-        id = e.target.parentElement.getAttribute("id");
+        idToRemove = e.target.parentElement.getAttribute("id");
     }
+    
+    let bookToDelete = books.map(book => book.id).indexOf(parseInt(idToRemove));
 
-    document.getElementById(id).remove();
+    books.splice(bookToDelete, 1);
+    document.getElementById(idToRemove).remove();
 }
 
 function editBook(e){    
     update.classList.remove("hidden");
     
-    let id;
+    let idToUpdate;
     
     if(e.target.nodeName != "BUTTON"){
-        id = e.target.parentElement.parentElement.getAttribute("id");
+        idToUpdate = e.target.parentElement.parentElement.getAttribute("id");
     } else {
-        id = e.target.parentElement.getAttribute("id");
+        idToUpdate = e.target.parentElement.getAttribute("id");
     }
 
-    updateId = parseInt(id);
+    updateId = parseInt(idToUpdate);
 }
 
 function updateBook(e){
@@ -142,6 +142,10 @@ function updateBook(e){
     const updatable = document.getElementById(updateId);
     const select = document.querySelector("#update-status");
     updatable.firstElementChild.children[3].firstElementChild.textContent = select.value;
+
+    let bookToUpdate = books.map(book => book.id).indexOf(updateId);
+    books[bookToUpdate].status = select.value
+
     select.selectedIndex = null;
     update.classList.add("hidden");
 }
@@ -157,3 +161,5 @@ function resetForm(){
     newPages.value = "";
     newStatus.selectedIndex = null;
 }
+
+// NEED TO UPDATE THE ARRAY WHEN SOMETHING CHANGES AND IMPLEMENT LOCAlSTORAGE
