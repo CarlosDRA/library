@@ -1,12 +1,16 @@
 "use strict";
 
 let id = 1;
+let updateId = 0
 const books = [];
 const library = document.querySelector(".card__container");
 const newBookBtn = document.querySelector("#add__book");
 const form = document.querySelector(".form__container");
+const update = document.querySelector(".update__container");
 const addBookBtn = document.querySelector("#form__add");
 const delBookBtn = document.querySelector("#form__del");
+const updateBtn = document.querySelector("#update__add");
+const delUpdateBtn = document.querySelector("#update__del");
 
 const newTitle = document.querySelector("#book-title");
 const newAuthor = document.querySelector("#book-author");
@@ -25,7 +29,7 @@ book.prototype.info = function(){
 };
 
 
-const theHobbit = new book("The hobbit", "J.R.R. Tolkien", 293, "not read yet");
+const theHobbit = new book("The hobbit", "J.R.R. Tolkien", 293, "Finished");
 const harryPotter = new book("Harry Potter", "J.K. Rowling", 100, "Plan to read");
 
 addBookToLibrary(theHobbit);
@@ -34,6 +38,8 @@ addBookToLibrary(harryPotter);
 newBookBtn.addEventListener("click", addBook);
 addBookBtn.addEventListener("click", formAdd);
 delBookBtn.addEventListener("click", formDel);
+updateBtn.addEventListener("click", updateBook);
+delUpdateBtn.addEventListener("click", updateCancel);
 
 
 //create a new book card
@@ -57,16 +63,18 @@ function newCard(title, author, pages, status){
             </div>
         </div>
     `;
+
+    const editBtn = document.createElement("button");
+    editBtn.classList.add("btn");
+    editBtn.innerHTML = `<span class="material-icons">edit</span>`;
+    editBtn.addEventListener("click", editBook)
+
     const removeBtn = document.createElement("button");
     removeBtn.classList.add("book__delete", "btn", "delete__btn");
-    removeBtn.innerText = "DELETE BOOK!";
-    removeBtn.addEventListener("click", (e) => {
-        let id = e.target.parentElement.getAttribute("id");
-        document.getElementById(id).remove();
-    })
+    removeBtn.innerHTML = `<span class="material-icons">delete_outline</span>`
+    removeBtn.addEventListener("click", removeBook)
 
-    card.appendChild(removeBtn);
-
+    card.append(editBtn, removeBtn);
     return card;
 }
 
@@ -77,13 +85,10 @@ function addBookToLibrary(book){
     books.push(book);
 }
 
-/* const delBook = document.querySelectorAll(".book__delete");
-delBook.forEach(btn => {
-    btn.addEventListener("click", (e)=>{
-        let id = e.target.parentElement.getAttribute("id");
-        document.getElementById(id).remove();
-    })
-}); */
+
+/* function getId(){
+
+} */
 
 //give functionality to the buttons
 function addBook(e){
@@ -104,6 +109,46 @@ function formDel(e){
     e.preventDefault();
     form.classList.add("hidden");
     resetForm();
+}
+
+function removeBook(e){
+    let id;
+
+    if(e.target.nodeName != "BUTTON"){
+        id = e.target.parentElement.parentElement.getAttribute("id");
+    } else {
+        id = e.target.parentElement.getAttribute("id");
+    }
+
+    document.getElementById(id).remove();
+}
+
+function editBook(e){    
+    update.classList.remove("hidden");
+    
+    let id;
+    
+    if(e.target.nodeName != "BUTTON"){
+        id = e.target.parentElement.parentElement.getAttribute("id");
+    } else {
+        id = e.target.parentElement.getAttribute("id");
+    }
+
+    updateId = parseInt(id);
+}
+
+function updateBook(e){
+    e.preventDefault();
+    const updatable = document.getElementById(updateId);
+    const select = document.querySelector("#update-status");
+    updatable.firstElementChild.children[3].firstElementChild.textContent = select.value;
+    select.selectedIndex = null;
+    update.classList.add("hidden");
+}
+
+function updateCancel(e){
+    e.preventDefault()
+    update.classList.add("hidden");
 }
 
 function resetForm(){

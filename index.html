@@ -8,6 +8,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
     
     <link rel="stylesheet" href="./styles/css/normalize.css">
     <link rel="stylesheet" href="./styles/css/main.css">
@@ -58,7 +60,7 @@
                 <input type="number" name="book-pages" id="book-pages">
 
                 <label for="book-status">Status</label>
-                <select id="book-status">
+                <select name="book-status" id="book-status">
                     <option value="Plan to read">Plan to read</option>
                     <option value="Reading">Reading</option>
                     <option value="On hold">On hold</option>
@@ -67,6 +69,25 @@
 
                 <button class="btn add__btn" id="form__add">Add Book</button>
                 <button class="btn delete__btn" id="form__del">Cancel</button>
+            </form>
+        </div>
+    </aside>
+
+    <aside class="update__container form__container hidden">
+        <div class="new__book">
+            <form action="" class="form">
+                <h2>Update book status</h2>
+
+                <label for="update-status">New status</label>
+                <select name="update-status" id="update-status">
+                    <option value="Plan to read">Plan to read</option>
+                    <option value="Reading">Reading</option>
+                    <option value="On hold">On hold</option>
+                    <option value="Finished">Finished</option>
+                </select>
+
+                <button class="btn add__btn" id="update__add">Update</button>
+                <button class="btn delete__btn" id="update__del">Cancel</button>
             </form>
         </div>
     </aside>
