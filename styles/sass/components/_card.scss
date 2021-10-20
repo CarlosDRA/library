@@ -4,6 +4,16 @@
     padding: 10px;
     border-radius: 5px;
     outline: 1px solid rgb(0 0 0 / .2);
+    text-align: center;
+
+    .edit__btn{
+        margin-left: 25%;
+        margin-right: 30px;
+    }
+
+    .delete__btn{
+        margin-right: 25%;
+    }
 }
 
 .card__grid{
@@ -12,6 +22,7 @@
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(2, 1fr);
     column-gap: 5px;
+    text-align: left;
     
     div{
         display: inline-block
@@ -30,13 +41,19 @@
         .btn{
             margin-right: 20px;
         }
+
+        .edit__btn{
+            margin-left: 0;
+        }
     }
 
     .card__grid{
         width: 85%;
+        height: 100%;
         margin-left: 10px;
         display: grid;
         grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: 100%;
         align-items: center;
         justify-content: left;
         column-gap: 5px;
