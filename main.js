@@ -65,7 +65,7 @@ function newCard(title, author, pages, status){
     `;
 
     const editBtn = document.createElement("button");
-    editBtn.classList.add("btn");
+    editBtn.classList.add("btn", "edit__btn");
     editBtn.innerHTML = `<span class="material-icons">edit</span>`;
     editBtn.addEventListener("click", editBook)
 

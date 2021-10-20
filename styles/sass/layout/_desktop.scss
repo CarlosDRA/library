@@ -19,14 +19,26 @@
 
     .info{
         height: 100%;
-        width: 80%;
-        display: flex;
+        width: 85%;
+        margin-left: 10px;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: 40px;
+        align-items: center;
+        column-gap: 5px;
+        
+        h3{
+            text-align: left;
+            margin: 0;
+        }
+        
+        /* display: flex;
         justify-content: space-around;
         align-items: center;
 
         h3{
             width: 90px;
             text-align: center;
-        }
+        } */
     }
 }
